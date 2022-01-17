@@ -3,16 +3,12 @@
   hosts: router1
 
   tasks:
-    - name: Remove any existing configuration
-      ios_l3_interfaces:
-        config:
-        - name: GigabitEthernet0/1.5
-          state: absent
-      
-    - name: Add config to the interface  
-      ios_l3_interfaces:
+    - name: Add the sub interface if it doesnt exist
+      cisco.ios.ios_l3_interfaces:
         config:
         - name: GigabitEthernet0/1.5
           ipv4:
           - address: 192.168.3.3/24
+        state: replaced
+...
 

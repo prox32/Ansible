@@ -6,5 +6,4 @@
   tasks:
 
     - name: Ping routers
-      ansible_ping:
-      
+      ansible.builtin.ping:
