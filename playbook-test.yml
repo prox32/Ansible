@@ -1,0 +1,10 @@
+---
+- name: configure sub interfaces on routers
+  hosts: routers
+  connection: network_cli
+
+  tasks:
+
+    - name: Ping routers
+      ansible_ping:
+      
