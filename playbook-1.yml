@@ -7,8 +7,22 @@
       cisco.ios.ios_l3_interfaces:
         config:
         - name: GigabitEthernet0/1.5
-          ipv4:
-          - address: 192.168.3.3/24
         state: replaced
+
+    - name: Add encapsulation and IP address to sub interface
+      ios_config:
+        lines:
+          - description vlan 30 sub interface
+          - encapsulation dot1q 30
+          - ip address 192.168.3.3 255.255.255.0
+        parents: interface GigabitEthernet0/1.5
+
+    - name: No shut parent interface to bring up sub interface
+      ios_config:
+        lines:
+          - no shutdown
+        parents: interface GigabitEthernet0/1
+
+      
 ...
 
