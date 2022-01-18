@@ -26,7 +26,7 @@
       when: inventory_hostname == '192.168.1.108'
 
     
-      - name: Add IP address to sub interface for router 1
+    - name: Add IP address to sub interface for router 1
       ios_config:
         lines:
           - ip address 192.168.3.2 255.255.255.0
