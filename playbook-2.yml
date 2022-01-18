@@ -1,0 +1,10 @@
+---
+name: Add object groups to each router for vlan 30
+hosts: routers
+gather_facts: true
+
+tasks:
+
+  - name: Create the object group on all routers for same subnet
+
+...

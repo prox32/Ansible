@@ -1,0 +1,12 @@
+---
+- name: gather and print all facts from 1 device
+  hosts: router1
+  gather_facts: yes
+
+  tasks:
+
+    - name: Print specific fact about router
+      ansible.builtin.debug:
+        var: "ansible_facts['net_interfaces']['GigabitEthernet0/1.5']['ipv4'][0]['address']"
+
+...
