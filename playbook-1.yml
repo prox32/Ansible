@@ -1,28 +1,40 @@
 ---
 - name: configure sub interfaces on routers
-  hosts: router1
+  hosts: routers
 
   tasks:
-    - name: Add the sub interface if it doesnt exist
-      cisco.ios.ios_l3_interfaces:
-        config:
-        - name: GigabitEthernet0/1.5
-        state: replaced
 
-    - name: Add encapsulation and IP address to sub interface
+    - name: Provision the sub interface on router 1
+      ios_config:
+        lines:
+          - description vlan 30 sub interface
+          - encapsulation dot1q 30
+          - ip address 192.168.3.1 255.255.255.0
+        parents: interface GigabitEthernet0/1.5
+      when: inventory_hostname == '192.168.1.107'
+      
+    - name: Provision the sub interface on router 2
+      ios_config:
+        lines:
+          - description vlan 30 sub interface
+          - encapsulation dot1q 30
+          - ip address 192.168.3.2 255.255.255.0
+        parents: interface GigabitEthernet0/1.5
+      when: inventory_hostname == '192.168.1.108'
+
+    - name: Provision the sub interface on router 3
       ios_config:
         lines:
           - description vlan 30 sub interface
           - encapsulation dot1q 30
           - ip address 192.168.3.3 255.255.255.0
         parents: interface GigabitEthernet0/1.5
+      when: inventory_hostname == '192.168.1.109'
 
-    - name: No shut parent interface to bring up sub interface
+    - name: No shut parent interface to bring up sub interface on all routers
       ios_config:
         lines:
           - no shutdown
         parents: interface GigabitEthernet0/1
-
-      
 ...
 
