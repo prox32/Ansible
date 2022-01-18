@@ -14,7 +14,7 @@
     - name: Add IP address to sub interface for router 1
       ios_config:
         lines:
-          - ip address 192.168.3.2 255.255.255.0
+          - ip address 192.168.3.1 255.255.255.0
         parents: interface GigabitEthernet0/1.5
       when: inventory_hostname == '192.168.1.107'
 
