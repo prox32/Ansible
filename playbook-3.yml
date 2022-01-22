@@ -1,0 +1,12 @@
+---
+- name: Use object group in access lists
+  hosts: routers
+  gather_facts: false
+
+  tasks:
+
+    - name: Create access list entry using object group
+      ios_config:
+        lines:
+          - permit ip object-group vlan-30 any
+        parents: ip access-list extended vlan-30
