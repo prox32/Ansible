@@ -11,5 +11,4 @@
           - description vlan 30 object group
           - "{{ ansible_facts['net_interfaces']['GigabitEthernet0/1.5']['ipv4'][0]['address'] }} /{{ ansible_facts['net_interfaces']['GigabitEthernet0/1.5']['ipv4'][0]['subnet'] }}"
         parents: object-group network vlan-30
-
 ...
