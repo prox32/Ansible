@@ -1,6 +1,6 @@
 ---
 - name: gather and print all facts from 1 device
-  hosts: router1
+  hosts: routers
   gather_facts: yes
 
   tasks:
