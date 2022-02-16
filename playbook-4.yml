@@ -1,0 +1,8 @@
+---
+
+- name: Ansible tower testing
+  hosts: routers
+
+  tasks:
+    
+        
